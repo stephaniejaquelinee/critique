@@ -1,0 +1,18 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+    "data": {"url": "https://raw.githubusercontent.com/stephaniejaquelinee/econTesting/main/soci_econ_country_profiles.csv"},
+    "transform": [
+        {
+          "filter": {
+            "field": "country",
+            "oneOf": ["China", "India", "Brazil", "Australia", "Canada", "France", "Germany", "Italy"]
+          }
+        }
+      ],
+    "mark": "bar",
+    "encoding": {
+      "x": {"aggregate": "sum", "field": "Economy: Agriculture (% of GVA)", "type": "quantitative"},
+      "y": {"field": "country", "type": "nominal"},
+      "color": {"field": "Region", "type": "nominal"}
+    }
+  }

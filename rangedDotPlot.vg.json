@@ -1,0 +1,75 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+    "data": {"url": "https://raw.githubusercontent.com/stephaniejaquelinee/data/main/Life%20expectancy.csv"},
+    "width": 610,
+    "height": 270,
+    "transform": [
+      {
+        "filter": {
+          "field": "Entity",
+          "oneOf": ["China", "India", "United States", "Brazil", "Australia", "Canada", "France", "Germany", "Italy"]
+        }
+      },
+      {
+        "filter": {
+          "field": "Year",
+          "oneOf": [1955, 2000]
+        }
+      }
+    ],
+    "encoding": {
+      "x": {
+        "field": "Life expectancy",
+        "type": "quantitative",
+        "axis": {
+          "title": "Life Expectancy (years)"
+        }
+      },
+      "y": {
+        "field": "Entity",
+        "type": "nominal",
+        "axis": {
+          "title": "Country",
+          "offset": 5,
+          "ticks": false,
+          "minExtent": 70,
+          "domain": false
+        }
+      }
+    },
+    "layer": [
+      {
+        "mark": "line",
+        "encoding": {
+          "detail": {
+            "field": "Entity",
+            "type": "nominal"
+          },
+          "color": {"value": "#db646f"}
+        }
+      },
+      {
+        "mark": {
+          "type": "point",
+          "filled": true
+        },
+        "encoding": {
+          "color": {
+            "field": "Year",
+            "type": "ordinal",
+            "scale": {
+              "domain": [1955, 2000],
+              "range": ["#e6959c", "#911a24"]
+            },
+            "legend": {
+              "title": "Year"
+            }
+          },
+          "size": {"value": 100},
+          "opacity": {"value": 1}
+        }
+      }
+    ],
+    "config": {
+        "background": "#f0f0f7"}
+  }

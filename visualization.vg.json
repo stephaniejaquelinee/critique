@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "USA GDP per Capita (in US$)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/stephaniejaquelinee/Homework10/main/GDP.csv"
+  },
+  "vconcat": [
+    {
+      "width": 610,
+      "mark": "area",
+      "encoding": {
+        "x": {
+          "field": "DATE",
+          "type": "temporal",
+          "scale": {"domain": {"param": "brush"}},
+          "axis": {"title": ""}
+        },
+        "y": {"field": "GDP", "type": "quantitative"}
+      }
+    },
+    {
+      "width": 610,
+      "height": 60,
+      "mark": "area",
+      "params": [
+        {"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}
+      ],
+      "encoding": {
+        "x": {"field": "DATE", "type": "temporal"},
+        "y": {
+          "field": "GDP",
+          "type": "quantitative",
+          "axis": {"tickCount": 3, "grid": false}
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#f0f0f7"}
+}
